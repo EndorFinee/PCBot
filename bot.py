@@ -8,12 +8,15 @@ import SQLighter
 import random
 import sys
 import time
+import psycopg2
 from telebot import types
 from SQLighter import SQLighter
 
 # Example of your code beginning
 #           Config vars
 token = os.environ['TELEGRAM_TOKEN']
+connect = psycopg2.connect(database='games', user='postgres', host='localhost', password='personacamp49')
+cursor = connect.cursor()
 #some_api_token = os.environ['SOME_API_TOKEN']
 #             ...
 
@@ -86,38 +89,87 @@ def callback_inline(call):
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="Выбери тип игры!", reply_markup=keyboard)
         if call.data == "inter":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_inter(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%inter%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%inter%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%inter%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "street":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_street(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%street%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%street%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%street%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "joke":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_joke(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%joke%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%joke%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%joke%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "relax":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_relax(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%relax%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%relax%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%relax%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "quick":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_quick(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%quick%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%quick%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%quick%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "touch":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_touch(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%touch%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%touch%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%touch%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "know":
             r=random.randint(1,59)
-            db_worker = SQLighter(config.database_name)
-            row = db_worker.select_single_know(r, a)
+            if a == 1:
+                cursor.execute("SELECT game FROM games WHERE type LIKE '%know%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                row = cursor.fetchall()
+            if a == 2:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%know%' AND (age = '10-17' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
+            if a == 3:
+                 cursor.execute("SELECT game FROM games WHERE type LIKE '%know%' AND (age = '10-17' OR age = '0' OR age = '14-17') ORDER BY RANDOM() LIMIT 1 ")
+                 row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
 
 if __name__ == '__main__':
