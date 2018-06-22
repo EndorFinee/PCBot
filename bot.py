@@ -21,6 +21,12 @@ mu.row('Еще!')
 @bot.message_handler(commands=['start'])
 def start_msg(message):
             bot.send_message(message.chat.id,"Привет!", reply_markup=mu)
+            keyboard = types.InlineKeyboardMarkup()
+            button = types.InlineKeyboardButton(text="6-9", callback_data="kids")
+            button1 = types.InlineKeyboardButton(text="10-13", callback_data="keys")
+            button2 = types.InlineKeyboardButton(text="14-17", callback_data="keep")
+            keyboard.add(button,button1,button2)
+            bot.send_message(message.chat.id,"Выбери возраст!", reply_markup=keyboard)
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
             keyboard = types.InlineKeyboardMarkup()
