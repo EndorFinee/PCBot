@@ -10,12 +10,14 @@ import sys
 import time
 import psycopg2
 from telebot import types
-from SQLighter import SQLighter
+
 
 # Example of your code beginning
 #           Config vars
 token = os.environ['TELEGRAM_TOKEN']
-connect = psycopg2.connect(database='games', user='postgres', host='localhost', password='personacamp49')
+DATABASE_URL=os.environ['DATABASE_URL']
+#connect = psycopg2.connect(database='games', user='postgres', host='localhost', password='personacamp49')
+connect = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = connect.cursor()
 #some_api_token = os.environ['SOME_API_TOKEN']
 #             ...
