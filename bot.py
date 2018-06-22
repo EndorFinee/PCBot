@@ -1,39 +1,28 @@
 # -*- coding: utf-8 -*-
-#import redis
 import os
 import telebot
-import sqlite3
 import config
-import SQLighter
 import random
 import sys
 import time
 import psycopg2
 from telebot import types
-
-
-# Example of your code beginning
 #           Config vars
 token = os.environ['TELEGRAM_TOKEN']
 DATABASE_URL=os.environ['DATABASE_URL']
-#connect = psycopg2.connect(database='games', user='postgres', host='localhost', password='personacamp49')
 connect = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = connect.cursor()
 #some_api_token = os.environ['SOME_API_TOKEN']
-#             ...
-
-#       Your bot code below
-# bot = telebot.TeleBot(token)
 # some_api = some_api_lib.connect(some_api_token)
 #              ...
 bot = telebot.TeleBot(token)
-#path = "C:/EndorFine/University/Diplom/"
 mu = types.ReplyKeyboardMarkup(resize_keyboard=True)
 mu.row('Еще!')
-
+@bot.message_handler(commands=['start'])
+def start_msg(message):
+            bot.send_message(message.chat.id,"Привет!", reply_markup=mu)
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
-            bot.send_message(message.chat.id,"Привет!", reply_markup=mu)
             keyboard = types.InlineKeyboardMarkup()
             button = types.InlineKeyboardButton(text="6-9", callback_data="kids")
             button1 = types.InlineKeyboardButton(text="10-13", callback_data="keys")
