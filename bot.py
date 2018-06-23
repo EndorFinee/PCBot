@@ -85,7 +85,6 @@ def callback_inline(call):
             keyboard.add(callback_button6)
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text="Выбери тип игры!", reply_markup=keyboard)
         if call.data == "inter":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%inter%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -97,7 +96,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "street":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%street%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -109,7 +107,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "joke":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%joke%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -121,7 +118,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "relax":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%relax%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -133,7 +129,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "quick":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%quick%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -145,7 +140,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "touch":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%touch%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -157,7 +151,6 @@ def callback_inline(call):
                  row = cursor.fetchall()
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
         if call.data == "know":
-            r=random.randint(1,59)
             if a == 1:
                 cursor.execute("SELECT game FROM games WHERE type LIKE '%know%' AND (age = '6-9' OR age = '0' OR age = '6-13') ORDER BY RANDOM() LIMIT 1 ")
                 row = cursor.fetchall()
@@ -170,5 +163,4 @@ def callback_inline(call):
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=row)
 
 if __name__ == '__main__':
-    random.seed()
     bot.polling(none_stop=True)
